@@ -11,6 +11,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gurgunday/grules.git"
+    "url": "git+https://github.com/gurgunday/grules.git"
   }
 }
