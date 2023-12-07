@@ -9,8 +9,13 @@
   "engines": {
     "node": ">=20"
   },
+  "scripts": {
+    "test": "eslint . && prettier --check .",
+    "test:fix": "eslint --fix . && prettier --write ."
+  },
   "dependencies": {
     "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-grules": "^0.0.17",
     "eslint-plugin-n": "^16.3.1",
     "eslint-plugin-prettier": "^5.0.1",
@@ -19,7 +24,8 @@
     "prettier": "^3.1.0"
   },
   "devDependencies": {
-    "@fastify/pre-commit": "^2.1.0"
+    "@fastify/pre-commit": "^2.1.0",
+    "grules": "^0.0.5"
   },
   "repository": {
     "type": "git",
