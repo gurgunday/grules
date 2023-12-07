@@ -102,7 +102,6 @@ module.exports = {
 
         "n/prefer-global/buffer": ["error", "never"],
         "n/prefer-global/process": ["error", "never"],
-        "unicorn/prefer-node-protocol": "error",
 
         "grules/no-charAt": "error",
         "grules/prefer-arrow-functions": "error",
@@ -150,6 +149,7 @@ module.exports = {
         "unicorn/prefer-modern-dom-apis": "error",
         "unicorn/prefer-modern-math-apis": "error",
         "unicorn/prefer-negative-index": "error",
+        "unicorn/prefer-node-protocol": "error",
         "unicorn/prefer-number-properties": "error",
         "unicorn/prefer-object-from-entries": "error",
         "unicorn/prefer-prototype-methods": "error",
