@@ -5,15 +5,14 @@ module.exports = {
         ecmaVersion: "latest",
         sourceType: "module",
       },
-      env: { browser: true },
+      env: { es2022: true, browser: true },
       reportUnusedDisableDirectives: true,
       extends: [
         "eslint:recommended",
         "plugin:promise/recommended",
-        "plugin:n/recommended",
         "plugin:prettier/recommended",
       ],
-      plugins: ["grules", "unicorn"],
+      plugins: ["grules", "unicorn", "n"],
       rules: {
         // Removals
         "one-var": ["error", "never"],
@@ -100,9 +99,6 @@ module.exports = {
         "require-await": "warn",
         "require-unicode-regexp": "warn",
 
-        "n/prefer-global/buffer": ["error", "never"],
-        "n/prefer-global/process": ["error", "never"],
-
         "grules/no-charAt": "error",
         "grules/prefer-arrow-functions": "error",
         "grules/prefer-inc-dec": "error",
@@ -167,6 +163,10 @@ module.exports = {
         "unicorn/require-array-join-separator": "warn",
         "unicorn/require-number-to-fixed-digits-argument": "warn",
         "unicorn/require-post-message-target-origin": "warn",
+
+        "n/no-deprecated-api": "error",
+        "n/no-extraneous-import": "error",
+        "n/no-missing-import": "error",
       },
     },
   },
