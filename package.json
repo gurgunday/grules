@@ -6,9 +6,6 @@
   "type": "module",
   "main": "",
   "exports": null,
-  "engines": {
-    "node": ">=20"
-  },
   "dependencies": {
     "eslint-plugin-grules": "^0.0.15"
   },
