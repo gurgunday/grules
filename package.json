@@ -9,5 +9,8 @@
   "dependencies": {
     "eslint-plugin-grules": "^0.0.15"
   },
-  "repository": "git+https://github.com/gurgunday/grules.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gurgunday/grules.git"
+  }
 }
