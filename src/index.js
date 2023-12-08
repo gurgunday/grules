@@ -7,12 +7,8 @@ module.exports = {
       },
       env: { es2022: true, browser: true },
       reportUnusedDisableDirectives: true,
-      extends: [
-        "eslint:recommended",
-        "plugin:promise/recommended",
-        "plugin:prettier/recommended",
-      ],
-      plugins: ["grules", "unicorn", "n"],
+      extends: ["eslint:recommended", "plugin:promise/recommended"],
+      plugins: ["grules", "unicorn", "n", "prettier"],
       rules: {
         // Removals
         "one-var": ["error", "never"],
@@ -81,7 +77,6 @@ module.exports = {
         "no-useless-rename": "error",
         "no-useless-return": "error",
 
-        "prefer-arrow-callback": "error",
         "prefer-const": "error",
         "prefer-destructuring": "error",
         "prefer-exponentiation-operator": "error",
@@ -167,6 +162,8 @@ module.exports = {
         "n/no-deprecated-api": "error",
         "n/no-extraneous-import": "error",
         "n/no-missing-import": "error",
+
+        "prettier/prettier": "error",
       },
     },
   },
