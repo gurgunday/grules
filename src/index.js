@@ -100,6 +100,7 @@ module.exports = {
         "grules/prefer-arrow-functions": "error",
         "grules/prefer-inc-dec": "error",
         "grules/prefer-index-access-at": "error",
+        "grules/prefer-literal-bigint": "error",
 
         // Unicorn conventions
         "unicorn/better-regex": "error",
@@ -178,5 +179,6 @@ module.exports = {
     "prefer-explicit-conditionals": require("./rules/prefer-explicit-conditionals.js"),
     "prefer-inc-dec": require("./rules/prefer-inc-dec.js"),
     "prefer-index-access-at": require("./rules/prefer-index-access-at.js"),
+    "prefer-literal-bigint": require("./rules/prefer-literal-bigint.js"),
   },
 };
