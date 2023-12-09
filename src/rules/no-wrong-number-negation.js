@@ -13,13 +13,13 @@ module.exports = {
         ) {
           context.report({
             node,
-            message: "Prefer '-Number(exp)' over 'Number(-exp)'.",
+            message: "Prefer '-exp' over 'Number(-exp)'.",
             fix: (fixer) => {
               const sourceCode = context.getSourceCode();
               const argumentText = sourceCode.getText(
                 node.arguments[0].argument,
               );
-              return fixer.replaceText(node, `-Number(${argumentText})`);
+              return fixer.replaceText(node, `-${argumentText}`);
             },
           });
         }

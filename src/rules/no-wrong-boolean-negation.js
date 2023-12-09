@@ -13,13 +13,13 @@ module.exports = {
         ) {
           context.report({
             node,
-            message: "Prefer '!Boolean(exp)' over 'Boolean(!exp)'.",
+            message: "Prefer '!exp' over 'Boolean(!exp)'.",
             fix: (fixer) => {
               const sourceCode = context.getSourceCode();
               const argumentText = sourceCode.getText(
                 node.arguments[0].argument,
               );
-              return fixer.replaceText(node, `!Boolean(${argumentText})`);
+              return fixer.replaceText(node, `!${argumentText}`);
             },
           });
         }
