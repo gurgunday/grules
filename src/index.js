@@ -129,7 +129,6 @@ module.exports = {
         "unicorn/prefer-array-index-of": "error",
         "unicorn/prefer-array-some": "error",
         "unicorn/prefer-blob-reading-methods": "error",
-        "unicorn/prefer-code-point": "error",
         "unicorn/prefer-date-now": "error",
         "unicorn/prefer-default-parameters": "error",
         "unicorn/prefer-dom-node-append": "error",
