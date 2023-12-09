@@ -95,7 +95,7 @@ module.exports = {
         "grules/no-charAt": "error",
         "grules/prefer-arrow-functions": "error",
         "grules/prefer-inc-dec": "error",
-        "grules/prefer-index-access": "error",
+        "grules/prefer-index-access-at": "error",
 
         // Unicorn conventions
         "unicorn/better-regex": "error",
@@ -170,6 +170,6 @@ module.exports = {
     "prefer-arrow-functions": require("./rules/prefer-arrow-functions.js"),
     "prefer-explicit-conditionals": require("./rules/prefer-explicit-conditionals.js"),
     "prefer-inc-dec": require("./rules/prefer-inc-dec.js"),
-    "prefer-index-access": require("./rules/prefer-index-access.js"),
+    "prefer-index-access-at": require("./rules/prefer-index-access-at.js"),
   },
 };
