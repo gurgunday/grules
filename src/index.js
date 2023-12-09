@@ -38,6 +38,7 @@ module.exports = {
           "FunctionDeclaration",
           "VariableDeclaration[kind='var']",
           "UnaryExpression[operator='void']",
+          "UnaryExpression[operator='+']",
           "SequenceExpression",
           "LabeledStatement",
         ],
