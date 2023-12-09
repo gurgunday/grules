@@ -14,6 +14,7 @@ module.exports = {
         "one-var": ["error", "never"],
         "func-names": ["error", "never"],
         "arrow-body-style": ["error", "always"],
+        "class-methods-use-this": "error",
         curly: ["error", "all"],
         eqeqeq: ["error", "always", { null: "ignore" }],
         "no-bitwise": ["error", { int32Hint: true }],
@@ -21,9 +22,12 @@ module.exports = {
         "no-eval": "error",
         "no-implied-eval": "error",
         "no-implicit-coercion": "error",
+        "no-unused-private-class-members": "error",
         "no-use-before-define": "error",
         "no-multi-assign": ["error", { ignoreNonDeclaration: true }],
         "no-multi-str": "error",
+        "no-new-native-nonconstructor": "error",
+        "no-new-wrappers": "error",
         "no-param-reassign": "error",
         "no-proto": "error",
         "no-restricted-syntax": [
@@ -37,13 +41,6 @@ module.exports = {
           "SequenceExpression",
           "LabeledStatement",
         ],
-
-        // Conventions that might as well be considered language features
-        "no-extend-native": "error",
-        "no-new-native-nonconstructor": "error",
-        "no-new-wrappers": "error",
-        "no-unused-private-class-members": "error",
-        "class-methods-use-this": "error",
 
         // Conventions that practically always make sense
         "dot-notation": "error",
@@ -61,6 +58,7 @@ module.exports = {
         "no-else-return": ["error", { allowElseIf: false }],
         "no-empty": ["error", { allowEmptyCatch: true }],
         "no-empty-static-block": "error",
+        "no-extend-native": "error",
         "no-extra-bind": "error",
         "no-array-constructor": "error",
         "no-object-constructor": "error",
