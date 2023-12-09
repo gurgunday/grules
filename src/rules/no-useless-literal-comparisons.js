@@ -1,3 +1,14 @@
+const comparisonOperators = new Set([
+  "==",
+  "===",
+  "!=",
+  "!==",
+  ">",
+  "<",
+  ">=",
+  "<=",
+]);
+
 module.exports = {
   meta: {
     fixable: "code",
@@ -5,7 +16,11 @@ module.exports = {
   create: (context) => {
     return {
       BinaryExpression: (node) => {
-        if (node.left.type === "Literal" && node.right.type === "Literal") {
+        if (
+          comparisonOperators.has(node.operator) &&
+          node.left.type === "Literal" &&
+          node.right.type === "Literal"
+        ) {
           context.report({
             node,
             message:
