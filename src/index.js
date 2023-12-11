@@ -99,7 +99,8 @@ module.exports = {
         "grules/no-wrong-number-negation": "error",
         "grules/prefer-arrow-functions": "error",
         "grules/prefer-inc-dec": "error",
-        "grules/prefer-index-access-at": "error",
+        "grules/prefer-property-access-at": "error",
+        "grules/prefer-property-access-object-entries": "error",
         "grules/prefer-literal-bigint": "error",
 
         // Unicorn conventions
@@ -175,7 +176,8 @@ module.exports = {
     "prefer-arrow-functions": require("./rules/prefer-arrow-functions.js"),
     "prefer-explicit-conditionals": require("./rules/prefer-explicit-conditionals.js"),
     "prefer-inc-dec": require("./rules/prefer-inc-dec.js"),
-    "prefer-index-access-at": require("./rules/prefer-index-access-at.js"),
+    "prefer-property-access-at": require("./rules/prefer-property-access-at.js"),
+    "prefer-property-access-object-entries": require("./rules/prefer-property-access-object-entries.js"),
     "prefer-literal-bigint": require("./rules/prefer-literal-bigint.js"),
   },
 };
