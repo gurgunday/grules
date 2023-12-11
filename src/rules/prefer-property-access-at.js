@@ -12,11 +12,16 @@ module.exports = {
           (node.callee.object.type === "Identifier" ||
             node.callee.object.type === "MemberExpression")
         ) {
+          const objectText = context
+            .getSourceCode()
+            .getText(node.callee.object);
           const [argument] = node.arguments;
+
           let val;
 
           if (
             argument.type === "UnaryExpression" &&
+            argument.argument.type === "Literal" &&
             typeof argument.argument.value === "number"
           ) {
             val = argument.argument.value;
@@ -27,9 +32,6 @@ module.exports = {
             val = argument.value;
           }
 
-          const objectText = context
-            .getSourceCode()
-            .getText(node.callee.object);
           let replacement;
 
           if (val !== undefined) {
