@@ -94,7 +94,6 @@ module.exports = {
         "require-unicode-regexp": "warn",
 
         "grules/no-charAt": "error",
-        "grules/no-useless-literal-comparisons": "error",
         "grules/no-wrong-boolean-negation": "error",
         "grules/no-wrong-number-negation": "error",
         "grules/prefer-arrow-functions": "error",
@@ -170,7 +169,6 @@ module.exports = {
   },
   rules: {
     "no-charAt": require("./rules/no-charAt.js"),
-    "no-useless-literal-comparisons": require("./rules/no-useless-literal-comparisons.js"),
     "no-wrong-boolean-negation": require("./rules/no-wrong-boolean-negation.js"),
     "no-wrong-number-negation": require("./rules/no-wrong-number-negation.js"),
     "prefer-arrow-functions": require("./rules/prefer-arrow-functions.js"),
