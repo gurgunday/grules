@@ -174,7 +174,6 @@ module.exports = {
     "no-wrong-boolean-negation": require("./rules/no-wrong-boolean-negation.js"),
     "no-wrong-number-negation": require("./rules/no-wrong-number-negation.js"),
     "prefer-arrow-functions": require("./rules/prefer-arrow-functions.js"),
-    "prefer-explicit-conditionals": require("./rules/prefer-explicit-conditionals.js"),
     "prefer-inc-dec": require("./rules/prefer-inc-dec.js"),
     "prefer-property-access-at": require("./rules/prefer-property-access-at.js"),
     "prefer-property-access-object-entries": require("./rules/prefer-property-access-object-entries.js"),
