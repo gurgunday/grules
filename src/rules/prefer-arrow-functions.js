@@ -142,8 +142,8 @@ const fixFunctionExpression = (src, node) => {
   const orig = src.getText();
   const tokens = src.getTokens(node);
   const swap = {};
-  const fnKeyword = tokens.find(tokenMatcher("Keyword", "function"));
 
+  const fnKeyword = tokens.find(tokenMatcher("Keyword", "function"));
   if (fnKeyword) {
     swap[tokenStart(fnKeyword)] = ["", true]; // Remove 'function' keyword
   }
