@@ -1,8 +1,3 @@
-/**
- * @fileoverview Rule to prefer arrow functions over plain functions
- * @author Triston Jones
- */
-
 /*
     MIT License
 
@@ -26,32 +21,6 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
-
-const isPrototypeAssignment = (node) => {
-  let { parent } = node;
-
-  while (parent) {
-    switch (parent.type) {
-      case "MemberExpression":
-        if (parent.property && parent.property.name === "prototype") {
-          return true;
-        }
-        parent = parent.object;
-        break;
-      case "AssignmentExpression":
-        parent = parent.left;
-        break;
-      case "Property":
-      case "ObjectExpression":
-        ({ parent } = parent.parent);
-        break;
-      default:
-        return false;
-    }
-  }
-
-  return false;
-};
 
 const isConstructor = (node) => {
   const { parent } = node;
@@ -80,22 +49,6 @@ const containsThis = (node) => {
     }
     return containsThis(node[field]);
   });
-};
-
-const isNamed = (node) => {
-  return node.type === "FunctionDeclaration" && node.id && node.id.name;
-};
-
-const functionOnlyContainsReturnStatement = (node) => {
-  return (
-    node.body.body.length === 1 && node.body.body[0].type === "ReturnStatement"
-  );
-};
-
-const isNamedDefaultExport = (node) => {
-  return (
-    node.id && node.id.name && node.parent.type === "ExportDefaultDeclaration"
-  );
 };
 
 const isClassMethod = (node) => {
@@ -188,153 +141,91 @@ const tokenMatcher = (type, value) => {
 const fixFunctionExpression = (src, node) => {
   const orig = src.getText();
   const tokens = src.getTokens(node);
-  const bodyTokens = src.getTokens(node.body);
-
   const swap = {};
   const fnKeyword = tokens.find(tokenMatcher("Keyword", "function"));
-  let prefix = "";
-  let suffix = "";
+
   if (fnKeyword) {
-    swap[tokenStart(fnKeyword)] = ["", true];
-    const nameToken = src.getTokenAfter(fnKeyword);
-    if (nameToken.type === "Identifier") {
-      swap[tokenStart(nameToken)] = [""];
-    }
-  } else if (node.parent.type === "MethodDefinition") {
-    // The eslint Node starts with the parens, like
-    //    render() { return "hi"; }
-    //          ^--- node starts here
-    // We need to add equals sign after the method name to convert to instance property assignment
-    prefix = " = ";
-    suffix = ";";
-
-    if (node.async) {
-      prefix = " = async ";
-    }
-  } else if (node.parent.type === "Property") {
-    // Similar to above
-    prefix = ": ";
-  }
-  swap[tokenStart(bodyTokens.find(tokenMatcher("Punctuator", "{")))] = [
-    "=> ",
-    true,
-  ];
-  const parens = node.body.body[0].argument.type === "ObjectExpression";
-  swap[tokenStart(bodyTokens.find(tokenMatcher("Keyword", "return")))] = [
-    parens ? "(" : "",
-    true,
-  ];
-
-  const returnRange = node.body.body.find((n) => {
-    return n.type === "ReturnStatement";
-  }).range;
-  const semicolon = bodyTokens.find((t) => {
-    return (
-      tokenEnd(t) === returnRange[1] &&
-      t.value === ";" &&
-      t.type === "Punctuator"
-    );
-  });
-  if (semicolon) {
-    swap[tokenStart(semicolon)] = [parens ? ")" : "", true];
+    swap[tokenStart(fnKeyword)] = ["", true]; // Remove 'function' keyword
   }
 
-  const closeBraces = bodyTokens.filter(tokenMatcher("Punctuator", "}"));
-  const lastCloseBrace = closeBraces[closeBraces.length - 1];
-  swap[tokenStart(lastCloseBrace)] = ["", false, true];
-  return (
-    prefix +
-    replaceTokens(orig, tokens, swap).replace(/ $/u, "") +
-    (parens && !semicolon ? ")" : "") +
-    suffix
-  );
+  // Handle the opening brace of the function body
+  const openingBrace = tokens.find(tokenMatcher("Punctuator", "{"));
+  if (openingBrace) {
+    swap[tokenStart(openingBrace)] = ["=> {", true]; // Add arrow function syntax
+  }
+
+  return replaceTokens(orig, tokens, swap);
 };
 
 const fixFunctionDeclaration = (src, node) => {
   const orig = src.getText();
   const tokens = src.getTokens(node);
-  const bodyTokens = src.getTokens(node.body);
   const swap = {};
-  const asyncKeyword = node.async ? "async " : "";
   const omitVar =
     node.parent && node.parent.type === "ExportDefaultDeclaration";
-  const parens = node.body.body[0].argument.type === "ObjectExpression";
-  swap[tokenStart(tokens.find(tokenMatcher("Keyword", "function")))] = omitVar
-    ? ["", true]
-    : ["const"];
-  swap[tokenStart(tokens.find(tokenMatcher("Punctuator", "(")))] = [
-    omitVar ? `${asyncKeyword}(` : ` = ${asyncKeyword}(`,
-  ];
 
-  if (node.async) {
-    swap[tokenStart(tokens.find(tokenMatcher("Identifier", "async")))] = [
-      "",
+  // Handle async keyword if present
+  const asyncToken = tokens.find(tokenMatcher("Identifier", "async"));
+  if (asyncToken) {
+    swap[tokenStart(asyncToken)] = ["", true]; // Remove the existing 'async' keyword
+  }
+
+  const functionKeywordToken = tokens.find(tokenMatcher("Keyword", "function"));
+  if (functionKeywordToken) {
+    swap[tokenStart(functionKeywordToken)] = omitVar ? ["", true] : ["const"];
+  }
+
+  const nameToken = node.id
+    ? tokens.find(tokenMatcher("Identifier", node.id.name))
+    : null;
+  if (nameToken) {
+    swap[tokenStart(nameToken)] = [
+      `${node.id.name} =${node.async ? " async" : ""} `,
       true,
     ];
   }
 
-  if (omitVar) {
-    const functionKeywordToken = tokens.find(
-      tokenMatcher("Keyword", "function"),
-    );
-    const nameToken = src.getTokenAfter(functionKeywordToken);
-    if (nameToken.type === "Identifier") {
-      swap[tokenStart(nameToken)] = [""];
-    }
-  }
-  swap[tokenStart(bodyTokens.find(tokenMatcher("Punctuator", "{")))] = [
-    "=> ",
-    true,
-  ];
-  swap[tokenStart(bodyTokens.find(tokenMatcher("Keyword", "return")))] = [
-    parens ? "(" : "",
-    true,
-  ];
-
-  const returnRange = node.body.body.find((n) => {
-    return n.type === "ReturnStatement";
-  }).range;
-  const semicolon = bodyTokens.find((t) => {
-    return (
-      tokenEnd(t) === returnRange[1] &&
-      t.value === ";" &&
-      t.type === "Punctuator"
-    );
-  });
-  if (semicolon) {
-    swap[tokenStart(semicolon)] = [parens ? ")" : "", true];
+  // Handle the opening brace of the function body
+  const openingBrace = tokens.find(tokenMatcher("Punctuator", "{"));
+  if (openingBrace) {
+    swap[tokenStart(openingBrace)] = ["=> {", true];
   }
 
-  const closeBraces = bodyTokens.filter(tokenMatcher("Punctuator", "}"));
-  const lastCloseBrace = closeBraces[closeBraces.length - 1];
-  swap[tokenStart(lastCloseBrace)] = ["", false, true];
-  return (
-    replaceTokens(orig, tokens, swap).replace(/ $/u, "") +
-    (parens && !semicolon ? ");" : ";")
-  );
+  return replaceTokens(orig, tokens, swap);
 };
 
 const inspectNode = (node, context) => {
   const opts = context.options[0] || {};
 
+  // Skip conversion for constructors
   if (isConstructor(node)) {
     return;
   }
+
+  // Skip conversion if the function contains 'this' references and is not a class method
   if (
     !isClassMethod(node) &&
     (containsThis(node.params) || containsThis(node.body))
   ) {
     return;
   }
+
+  // Skip conversion for generator functions
   if (isGeneratorFunction(node)) {
     return;
   }
+
+  // Skip conversion for getters and setters
   if (isGetterOrSetter(node)) {
     return;
   }
+
+  // Skip conversion for class methods if not allowed
   if (isClassMethod(node) && !opts.classPropertiesAllowed) {
     return;
   }
+
+  // Skip conversion if standalone declarations are allowed and the function is a standalone declaration or module export
   if (
     opts.allowStandaloneDeclarations &&
     (isStandaloneDeclaration(node) || isModuleExport(node))
@@ -342,57 +233,25 @@ const inspectNode = (node, context) => {
     return;
   }
 
-  if (opts.singleReturnOnly) {
-    if (
-      functionOnlyContainsReturnStatement(node) &&
-      !isNamedDefaultExport(node) &&
-      (opts.classPropertiesAllowed || !isClassMethod(node))
-    ) {
-      return context.report({
-        node,
-        message:
-          "Prefer using arrow functions over plain functions which only return a value",
-        fix: (fixer) => {
-          const src = context.getSourceCode();
-          let newText = null;
-          if (node.type === "FunctionDeclaration") {
-            newText = fixFunctionDeclaration(src, node);
-          } else if (node.type === "FunctionExpression") {
-            newText = fixFunctionExpression(src, node);
+  // Report the node to be fixed
+  return context.report({
+    node,
+    message: "Prefer using arrow functions over plain functions",
+    fix: (fixer) => {
+      const src = context.getSourceCode();
+      let newText = null;
 
-            // In the case of an async method definition, we remove the "async" prefix
-            if (node.async && node.parent.type === "MethodDefinition") {
-              const parentTokens = src.getTokens(node.parent);
-              const asyncToken = parentTokens.find(
-                tokenMatcher("Identifier", "async"),
-              );
-              const nextToken = parentTokens.find((_, i, arr) => {
-                return arr[i - 1] && arr[i - 1] === asyncToken;
-              });
+      if (node.type === "FunctionDeclaration") {
+        newText = fixFunctionDeclaration(src, node);
+      } else if (node.type === "FunctionExpression") {
+        newText = fixFunctionExpression(src, node);
+      }
 
-              return [
-                fixer.replaceText(node, newText),
-                fixer.replaceTextRange(
-                  [tokenStart(asyncToken), tokenStart(nextToken)],
-                  "",
-                ),
-              ];
-            }
-          }
-          if (newText !== null) {
-            return fixer.replaceText(node, newText);
-          }
-        },
-      });
-    }
-  } else if (opts.disallowPrototype || !isPrototypeAssignment(node)) {
-    return context.report(
-      node,
-      isNamed(node)
-        ? "Use const or class constructors instead of named functions"
-        : "Prefer using arrow functions over plain functions",
-    );
-  }
+      if (newText) {
+        return fixer.replaceText(node, newText);
+      }
+    },
+  });
 };
 
 module.exports = {
