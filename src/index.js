@@ -77,7 +77,11 @@ module.exports = {
         "no-useless-return": "error",
 
         "prefer-const": "error",
-        "prefer-destructuring": "error",
+        "prefer-destructuring": [
+          "error",
+          { object: true },
+          { enforceForRenamedProperties: true },
+        ],
         "prefer-exponentiation-operator": "error",
         "prefer-named-capture-group": "error",
         "prefer-numeric-literals": "error",
@@ -104,6 +108,7 @@ module.exports = {
 
         // Unicorn conventions
         "unicorn/better-regex": "error",
+        "unicorn/consistent-destructuring": "error",
         "unicorn/consistent-function-scoping": "error",
         "unicorn/custom-error-definition": "error",
         "unicorn/error-message": "error",
