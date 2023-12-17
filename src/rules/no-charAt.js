@@ -15,7 +15,7 @@ module.exports = {
           const [argument] = node.arguments;
 
           const replacement =
-            argument && argument.type === "Literal"
+            argument?.type === "Literal"
               ? `${objectText}[${argument.raw}]`
               : `${objectText}[${context.getSourceCode().getText(argument)}]`;
 
