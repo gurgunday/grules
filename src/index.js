@@ -77,11 +77,7 @@ module.exports = {
         "no-useless-return": "error",
 
         "prefer-const": "error",
-        "prefer-destructuring": [
-          "error",
-          { object: true },
-          { enforceForRenamedProperties: true },
-        ],
+        "prefer-destructuring": ["error", { object: true }],
         "prefer-exponentiation-operator": "error",
         "prefer-named-capture-group": "error",
         "prefer-numeric-literals": "error",
