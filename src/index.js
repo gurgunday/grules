@@ -14,7 +14,6 @@ module.exports = {
         "one-var": ["error", "never"],
         "func-names": ["error", "never"],
         "arrow-body-style": ["error", "always"],
-        "class-methods-use-this": "error",
         curly: ["error", "all"],
         eqeqeq: ["error", "always", { null: "ignore" }],
         "no-bitwise": ["error", { int32Hint: true }],
@@ -44,6 +43,7 @@ module.exports = {
         ],
 
         // Conventions that practically always make sense
+        "class-methods-use-this": "error",
         "dot-notation": "error",
         "object-shorthand": "error",
         "operator-assignment": ["error", "always"],
@@ -77,7 +77,11 @@ module.exports = {
         "no-useless-return": "error",
 
         "prefer-const": "error",
-        "prefer-destructuring": ["error", { object: true }],
+        "prefer-destructuring": [
+          "error",
+          { object: true },
+          { enforceForRenamedProperties: true },
+        ],
         "prefer-exponentiation-operator": "error",
         "prefer-named-capture-group": "error",
         "prefer-numeric-literals": "error",
