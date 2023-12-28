@@ -2,7 +2,7 @@
   "name": "grules",
   "author": "Gürgün Dayıoğlu",
   "license": "MIT",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "type": "commonjs",
   "main": "./src/index.js",
   "exports": "./src/index.js",
