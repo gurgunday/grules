@@ -21,6 +21,7 @@ module.exports = {
         "no-eval": "error",
         "no-implied-eval": "error",
         "no-implicit-coercion": "error",
+        "no-unused-expressions": "error",
         "no-unused-private-class-members": "error",
         "no-use-before-define": "error",
         "no-multi-assign": ["error", { ignoreNonDeclaration: true }],
