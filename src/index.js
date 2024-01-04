@@ -10,7 +10,7 @@ module.exports = {
       extends: ["eslint:recommended", "plugin:promise/recommended"],
       plugins: ["grules", "unicorn", "n", "prettier"],
       rules: {
-        // Removals
+        // Core changes
         "one-var": ["error", "never"],
         "func-names": ["error", "never"],
         "arrow-body-style": ["error", "always"],
@@ -104,7 +104,7 @@ module.exports = {
         "grules/prefer-property-access-at": "error",
         "grules/prefer-property-access-object-entries": "error",
 
-        // Unicorn conventions
+        // Third-party conventions
         "unicorn/better-regex": "error",
         "unicorn/consistent-destructuring": "error",
         "unicorn/consistent-function-scoping": "error",
