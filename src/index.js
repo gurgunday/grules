@@ -95,13 +95,14 @@ module.exports = {
         "require-unicode-regexp": "warn",
 
         "grules/no-charAt": "error",
-        "grules/no-wrong-boolean-negation": "error",
-        "grules/no-wrong-number-negation": "error",
         "grules/prefer-arrow-functions": "error",
         "grules/prefer-inc-dec": "error",
+        "grules/prefer-literal-bigint": "error",
+        "grules/prefer-negation-operator-boolean": "error",
+        "grules/prefer-negation-operator-number": "error",
+        "grules/prefer-positive-conditions": "error",
         "grules/prefer-property-access-at": "error",
         "grules/prefer-property-access-object-entries": "error",
-        "grules/prefer-literal-bigint": "error",
 
         // Unicorn conventions
         "unicorn/better-regex": "error",
@@ -171,12 +172,13 @@ module.exports = {
   },
   rules: {
     "no-charAt": require("./rules/no-charAt.js"),
-    "no-wrong-boolean-negation": require("./rules/no-wrong-boolean-negation.js"),
-    "no-wrong-number-negation": require("./rules/no-wrong-number-negation.js"),
     "prefer-arrow-functions": require("./rules/prefer-arrow-functions.js"),
     "prefer-inc-dec": require("./rules/prefer-inc-dec.js"),
+    "prefer-literal-bigint": require("./rules/prefer-literal-bigint.js"),
+    "prefer-negation-operator-boolean": require("./rules/prefer-negation-operator-boolean.js"),
+    "prefer-negation-operator-number": require("./rules/prefer-negation-operator-number.js"),
+    "prefer-positive-conditions": require("./rules/prefer-positive-conditions.js"),
     "prefer-property-access-at": require("./rules/prefer-property-access-at.js"),
     "prefer-property-access-object-entries": require("./rules/prefer-property-access-object-entries.js"),
-    "prefer-literal-bigint": require("./rules/prefer-literal-bigint.js"),
   },
 };
