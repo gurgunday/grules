@@ -60,7 +60,7 @@ module.exports = {
         "no-empty-static-block": "error",
         "no-extend-native": "error",
         "no-extra-bind": "error",
-        "no-implicit-coercion": "error",
+        "no-implicit-coercion": ["error", { disallowTemplateShorthand: false }],
         "no-lone-blocks": "error",
         "no-lonely-if": "error",
         "no-object-constructor": "error",
