@@ -11,6 +11,7 @@ module.exports = {
       plugins: ["grules", "unicorn", "n", "prettier"],
       rules: {
         // Core changes
+        "class-methods-use-this": "error",
         "one-var": ["error", "never"],
         "func-names": ["error", "never"],
         "arrow-body-style": ["error", "always"],
@@ -41,7 +42,6 @@ module.exports = {
         ],
 
         // Conventions that practically always make sense
-        "class-methods-use-this": "error",
         "dot-notation": "error",
         "object-shorthand": "error",
         "operator-assignment": ["error", "always"],
@@ -60,7 +60,6 @@ module.exports = {
         "no-empty-static-block": "error",
         "no-extend-native": "error",
         "no-extra-bind": "error",
-        "no-implicit-coercion": ["error", { disallowTemplateShorthand: false }],
         "no-lone-blocks": "error",
         "no-lonely-if": "error",
         "no-object-constructor": "error",
@@ -143,6 +142,7 @@ module.exports = {
         "unicorn/prefer-logical-operator-over-ternary": "error",
         "unicorn/prefer-modern-dom-apis": "error",
         "unicorn/prefer-modern-math-apis": "error",
+        "unicorn/prefer-native-coercion-functions": "error",
         "unicorn/prefer-negative-index": "error",
         "unicorn/prefer-node-protocol": "error",
         "unicorn/prefer-number-properties": "error",
