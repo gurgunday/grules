@@ -99,7 +99,6 @@ module.exports = {
         "grules/prefer-literal-bigint": "error",
         "grules/prefer-negation-operator-boolean": "error",
         "grules/prefer-negation-operator-number": "error",
-        "grules/prefer-positive-conditions": "error",
         "grules/prefer-property-access-at": "error",
         "grules/prefer-property-access-object-entries": "error",
 
@@ -178,7 +177,6 @@ module.exports = {
     "prefer-literal-bigint": require("./rules/prefer-literal-bigint.js"),
     "prefer-negation-operator-boolean": require("./rules/prefer-negation-operator-boolean.js"),
     "prefer-negation-operator-number": require("./rules/prefer-negation-operator-number.js"),
-    "prefer-positive-conditions": require("./rules/prefer-positive-conditions.js"),
     "prefer-property-access-at": require("./rules/prefer-property-access-at.js"),
     "prefer-property-access-object-entries": require("./rules/prefer-property-access-object-entries.js"),
   },
