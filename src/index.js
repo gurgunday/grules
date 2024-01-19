@@ -112,7 +112,7 @@ module.exports = {
         "unicorn/no-array-for-each": "error",
         "unicorn/no-array-push-push": "error",
         "unicorn/no-instanceof-array": "error",
-        "unicorn/no-negated-condition": "error",
+        "unicorn/no-negated-condition": "off",
         "unicorn/no-static-only-class": "error",
         "unicorn/no-thenable": "error",
         "unicorn/no-unnecessary-await": "error",

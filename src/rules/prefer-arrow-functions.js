@@ -28,7 +28,7 @@ const isConstructor = (node) => {
 };
 
 const containsThis = (node) => {
-  if (typeof node !== "object" || node === null) {
+  if (node == null) {
     return false;
   }
   if (node.type === "FunctionDeclaration") {
