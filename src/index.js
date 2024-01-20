@@ -10,7 +10,7 @@ module.exports = {
       extends: ["eslint:recommended", "plugin:promise/recommended"],
       plugins: ["grules", "unicorn", "n", "prettier"],
       rules: {
-        // Syntactic/Semantic changes
+        // Fundamental changes
         "class-methods-use-this": "error",
         "one-var": ["error", "never"],
         "func-names": ["error", "never"],
@@ -18,7 +18,6 @@ module.exports = {
         curly: ["error", "all"],
         "default-case-last": "error",
         eqeqeq: ["error", "always", { null: "ignore" }],
-        "new-cap": ["error", { capIsNew: false }],
         "no-bitwise": ["error", { int32Hint: true }],
         "no-constructor-return": "error",
         "no-duplicate-imports": "error",
@@ -69,6 +68,7 @@ module.exports = {
           "always",
           { enforceForIfStatements: true },
         ],
+        "new-cap": ["error", { capIsNew: false }],
         "no-alert": "error",
         "no-array-constructor": "error",
         "no-await-in-loop": "warn",
@@ -132,9 +132,16 @@ module.exports = {
         "prefer-spread": "error",
         "prefer-template": "error",
 
+        radix: ["error", "as-needed"],
         "require-atomic-updates": ["warn", { allowProperties: true }],
         "require-await": "warn",
         "require-unicode-regexp": "warn",
+
+        "sort-imports": "off",
+        "sort-keys": "off",
+        "sort-vars": "off",
+        strict: "off",
+        "symbol-description": "error",
 
         "grules/no-charAt": "error",
         "grules/prefer-arrow-functions": "error",
