@@ -132,8 +132,7 @@ const replaceTokens = (origSource, tokens, replacements) => {
 const tokenMatcher = (type, value) => {
   return (token) => {
     return (
-      token.type === type &&
-      (typeof value === "undefined" || token.value === value)
+      token.type === type && (value === undefined || token.value === value)
     );
   };
 };
