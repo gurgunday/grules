@@ -3,7 +3,7 @@
   "description": "By meticulously pruning away redundant or less intuitive aspects of JavaScript, grules offer a coherent and more elegant version of the language.",
   "author": "Gürgün Dayıoğlu",
   "license": "MIT",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "type": "commonjs",
   "main": "./src/index.js",
   "exports": "./src/index.js",
