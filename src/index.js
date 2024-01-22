@@ -158,6 +158,7 @@ module.exports = {
         "grules/prefer-property-access-object-entries": "error",
 
         // Third-Party Rules
+
         "unicorn/better-regex": "error",
         "unicorn/catch-error-name": "off",
         "unicorn/consistent-destructuring": "warn",
