@@ -193,7 +193,6 @@ module.exports = {
         "unicorn/prefer-dom-node-append": "error",
         "unicorn/prefer-dom-node-dataset": "error",
         "unicorn/prefer-dom-node-remove": "error",
-        "unicorn/prefer-dom-node-text-content": "error",
         "unicorn/prefer-export-from": "error",
         "unicorn/prefer-includes": "error",
         "unicorn/prefer-keyboard-event-key": "error",
