@@ -12,7 +12,7 @@ npm i grules
 
 Create `.eslintrc.json` at the root of your project:
 
-```shell
+```json
 {
   "root": true,
   "env": { "node": true },
@@ -23,8 +23,8 @@ Create `.eslintrc.json` at the root of your project:
 Add the following to `package.json`:
 
 ```json
-  "scripts": {
-    "lint": "eslint . && prettier --check .",
-    "lint:fix": "eslint --fix . && prettier --write ."
-  }
+"scripts": {
+  "lint": "eslint . && prettier --check .",
+  "lint:fix": "eslint --fix . && prettier --write ."
+}
 ```
