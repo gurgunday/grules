@@ -26,5 +26,5 @@ Add the following to `package.json`:
   "scripts": {
     "lint": "eslint . && prettier --check .",
     "lint:fix": "eslint --fix . && prettier --write ."
-  },
+  }
 ```
