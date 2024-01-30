@@ -1,6 +1,6 @@
 {
   "name": "grules",
-  "description": "By meticulously pruning away redundant or less intuitive aspects of JavaScript, grules offer a coherent and more elegant version of the language.",
+  "description": "A carefully curated subset of JavaScript that focuses on coherence and elegance.",
   "author": "Gürgün Dayıoğlu",
   "license": "MIT",
   "version": "0.6.3",
