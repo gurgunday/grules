@@ -7,8 +7,13 @@ module.exports = {
       },
       env: { es2022: true, browser: true },
       reportUnusedDisableDirectives: true,
-      extends: ["eslint:recommended", "plugin:promise/recommended"],
-      plugins: ["grules", "unicorn", "n", "prettier"],
+      extends: [
+        "eslint:recommended",
+        "plugin:promise/recommended",
+        "plugin:jsdoc/recommended",
+        "plugin:prettier/recommended",
+      ],
+      plugins: ["grules", "unicorn", "n"],
       rules: {
         // Core changes
         "class-methods-use-this": "error",
@@ -225,8 +230,6 @@ module.exports = {
         "n/no-deprecated-api": "error",
         "n/no-extraneous-import": "error",
         "n/no-missing-import": "error",
-
-        "prettier/prettier": "error",
       },
     },
   },
