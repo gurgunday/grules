@@ -10,8 +10,8 @@ module.exports = {
       extends: [
         "eslint:recommended",
         "plugin:promise/recommended",
-        "plugin:jsdoc/recommended",
         "plugin:prettier/recommended",
+        "plugin:jsdoc/recommended",
       ],
       plugins: ["grules", "unicorn", "n"],
       rules: {
