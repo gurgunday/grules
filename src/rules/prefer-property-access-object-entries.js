@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   create: (context) => {
     return {
       CallExpression: (node) => {

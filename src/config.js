@@ -1,13 +1,4 @@
-import noCharAt from "./rules/no-charAt.js";
-import preferArrowFunctions from "./rules/prefer-arrow-functions.js";
-import preferIncDec from "./rules/prefer-inc-dec.js";
-import preferLiteralBigint from "./rules/prefer-literal-bigint.js";
-import preferNegationOperatorBoolean from "./rules/prefer-negation-operator-boolean.js";
-import preferNegationOperatorNumber from "./rules/prefer-negation-operator-number.js";
-import preferPropertyAccessAt from "./rules/prefer-property-access-at.js";
-import preferPropertyAccessObjectEntries from "./rules/prefer-property-access-object-entries.js";
-
-export default {
+module.exports = {
   configs: {
     all: {
       parserOptions: {
@@ -243,13 +234,13 @@ export default {
     },
   },
   rules: {
-    "no-charAt": noCharAt,
-    "prefer-arrow-functions": preferArrowFunctions,
-    "prefer-inc-dec": preferIncDec,
-    "prefer-literal-bigint": preferLiteralBigint,
-    "prefer-negation-operator-boolean": preferNegationOperatorBoolean,
-    "prefer-negation-operator-number": preferNegationOperatorNumber,
-    "prefer-property-access-at": preferPropertyAccessAt,
-    "prefer-property-access-object-entries": preferPropertyAccessObjectEntries,
+    "no-charAt": require("./rules/no-charAt"),
+    "prefer-arrow-functions": require("./rules/prefer-arrow-functions"),
+    "prefer-inc-dec": require("./rules/prefer-inc-dec"),
+    "prefer-literal-bigint": require("./rules/prefer-literal-bigint"),
+    "prefer-negation-operator-boolean": require("./rules/prefer-negation-operator-boolean"),
+    "prefer-negation-operator-number": require("./rules/prefer-negation-operator-number"),
+    "prefer-property-access-at": require("./rules/prefer-property-access-at"),
+    "prefer-property-access-object-entries": require("./rules/prefer-property-access-object-entries"),
   },
 };
