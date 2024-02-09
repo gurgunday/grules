@@ -253,7 +253,7 @@ const inspectNode = (node, context) => {
   });
 };
 
-module.exports = {
+export default {
   meta: {
     docs: {
       description: "prefer arrow functions",
