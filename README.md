@@ -10,7 +10,7 @@ npm i grules
 
 ## Usage
 
-Create `.eslintrc.json` at the root of your project:
+Create `.eslintrc.json` at the root of the project:
 
 ```json
 {
