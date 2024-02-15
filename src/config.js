@@ -52,6 +52,7 @@ module.exports = {
           "SequenceExpression",
           "LabeledStatement",
         ],
+        "no-self-compare": "error",
 
         // error — conventions that should nearly always be enforced
         // warn — conventions that should be enforced but there are valid cases where they may be ignored
@@ -81,7 +82,7 @@ module.exports = {
         ],
         "new-cap": ["error", { capIsNew: false }],
         "no-alert": "error",
-        "no-array-constructor": "warn",
+        "no-array-constructor": "error",
         "no-await-in-loop": "warn",
         "no-console": "warn",
         "no-continue": "off",
@@ -106,13 +107,12 @@ module.exports = {
         "no-negated-condition": "off",
         "no-nested-ternary": "off",
         "no-new": "off",
-        "no-new-func": "warn",
-        "no-object-constructor": "warn",
+        "no-new-func": "off",
+        "no-object-constructor": "error",
         "no-param-reassign": "off",
         "no-plusplus": "off",
         "no-promise-executor-return": "off",
         "no-return-assign": "off",
-        "no-self-compare": "off", // NaN
         "no-template-curly-in-string": "off",
         "no-unmodified-loop-condition": "error",
         "no-unneeded-ternary": "error",
@@ -161,13 +161,14 @@ module.exports = {
         // Third-Party Rules
 
         "unicorn/better-regex": "error",
-        "unicorn/consistent-destructuring": "error",
-        "unicorn/consistent-function-scoping": "error",
+        "unicorn/consistent-destructuring": "warn",
+        "unicorn/consistent-function-scoping": "warn",
         "unicorn/custom-error-definition": "error",
         "unicorn/error-message": "error",
         "unicorn/escape-case": "error",
         "unicorn/new-for-builtins": "error",
         "unicorn/no-array-for-each": "error",
+        "unicorn/no-array-method-this-argument": "error",
         "unicorn/no-array-push-push": "error",
         "unicorn/no-console-spaces": "error",
         "unicorn/no-instanceof-array": "error",
