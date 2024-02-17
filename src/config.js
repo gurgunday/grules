@@ -149,6 +149,8 @@ module.exports = {
         strict: "off",
         "symbol-description": "error",
 
+        "promise/always-return": ["error", { ignoreLastCallback: true }],
+
         "grules/no-charAt": "error",
         "grules/prefer-arrow-functions": "error",
         "grules/prefer-inc-dec": "error",
