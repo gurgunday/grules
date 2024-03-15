@@ -16,14 +16,12 @@ module.exports = {
       plugins: ["grules", "unicorn", "n"],
       rules: {
         // Core changes
-        "class-methods-use-this": "error",
-        "one-var": ["error", "never"],
-        "func-names": ["error", "never"],
         "arrow-body-style": ["error", "always"],
+        "class-methods-use-this": "error",
         curly: ["error", "all"],
         "default-case-last": "error",
         eqeqeq: ["error", "always", { null: "ignore" }],
-        "no-bitwise": ["error", { int32Hint: true }],
+        "func-names": ["error", "never"],
         "no-caller": "error",
         "no-constructor-return": "error",
         "no-duplicate-imports": "error",
@@ -53,6 +51,7 @@ module.exports = {
           "LabeledStatement",
         ],
         "no-self-compare": "error",
+        "one-var": ["error", "never"],
 
         // error — conventions that should nearly always be enforced
         // warn — conventions that should be enforced but there are valid cases where they may be ignored
@@ -70,7 +69,7 @@ module.exports = {
         "default-case": "off",
         "default-param-last": "off",
         "dot-notation": "error",
-        "func-name-matching": "off",
+        "func-name-matching": "error",
         "func-style": "off",
         "grouped-accessor-pairs": "off",
         "guard-for-in": "off",
@@ -84,7 +83,8 @@ module.exports = {
         "no-alert": "error",
         "no-array-constructor": "error",
         "no-await-in-loop": "warn",
-        "no-console": ["warn", { allow: ["warn", "error"] }],
+        "no-bitwise": "off",
+        "no-console": "off",
         "no-continue": "off",
         "no-div-regex": "off",
         "no-else-return": ["error", { allowElseIf: false }],
