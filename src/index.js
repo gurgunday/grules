@@ -161,7 +161,7 @@ module.exports = {
         "sort-keys": "off",
         "sort-vars": "off",
         strict: "off",
-        "symbol-description": "error",
+        "symbol-description": "off",
 
         "promise/always-return": ["error", { ignoreLastCallback: true }],
 
