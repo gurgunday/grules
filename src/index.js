@@ -40,7 +40,6 @@ module.exports = {
         "no-proto": "error",
         "no-restricted-syntax": [
           "error",
-          "PrivateIdentifier",
           "ClassDeclaration",
           "MethodDefinition[kind='get']",
           "MethodDefinition[kind='set']",
