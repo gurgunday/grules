@@ -85,7 +85,7 @@ module.exports = {
         "no-array-constructor": "error",
         "no-await-in-loop": "warn",
         "no-bitwise": "off",
-        "no-console": ["warn", { allow: ["warn", "error"] }],
+        "no-console": ["error", { allow: ["warn", "error"] }],
         "no-continue": "off",
         "no-div-regex": "off",
         "no-else-return": ["error", { allowElseIf: false }],
