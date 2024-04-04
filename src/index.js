@@ -83,8 +83,8 @@ module.exports = {
         "no-alert": "error",
         "no-array-constructor": "error",
         "no-await-in-loop": "warn",
-        "no-bitwise": ["warn", { int32Hint: true }],
-        "no-console": ["error", { allow: ["warn", "error"] }],
+        "no-bitwise": "off",
+        "no-console": "off",
         "no-continue": "off",
         "no-div-regex": "off",
         "no-else-return": ["error", { allowElseIf: false }],
@@ -165,6 +165,7 @@ module.exports = {
         "promise/always-return": ["error", { ignoreLastCallback: true }],
 
         "grules/no-charAt": "error",
+        "grules/no-console-log": "error",
         "grules/prefer-arrow-functions": "error",
         "grules/prefer-inc-dec": "error",
         "grules/prefer-literal-bigint": "error",
@@ -252,6 +253,7 @@ module.exports = {
   },
   rules: {
     "no-charAt": require("./rules/no-charAt"),
+    "no-console-log": require("./rules/no-console-log"),
     "prefer-arrow-functions": require("./rules/prefer-arrow-functions"),
     "prefer-inc-dec": require("./rules/prefer-inc-dec"),
     "prefer-literal-bigint": require("./rules/prefer-literal-bigint"),
