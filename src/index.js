@@ -245,7 +245,7 @@ module.exports = {
         "n/no-deprecated-api": "error",
         "n/no-extraneous-import": "error",
         "n/no-missing-import": "error",
-        "n/prefer-node-protocol ": "error",
+        "n/prefer-node-protocol": "error",
       },
     },
   },
