@@ -107,7 +107,7 @@ module.exports = {
         "no-negated-condition": "off",
         "no-nested-ternary": "off",
         "no-new": "off",
-        "no-new-func": "off",
+        "no-new-func": "error",
         "no-object-constructor": "error",
         "no-param-reassign": "off",
         "no-plusplus": "off",
