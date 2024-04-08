@@ -223,7 +223,7 @@ module.exports = {
         "unicorn/prefer-modern-math-apis": "error",
         "unicorn/prefer-native-coercion-functions": "error",
         "unicorn/prefer-negative-index": "error",
-        "unicorn/prefer-number-properties": "error",
+        "unicorn/prefer-number-properties": "error", // turn off for NaN
         "unicorn/prefer-object-from-entries": "error",
         "unicorn/prefer-optional-catch-binding": "error",
         "unicorn/prefer-prototype-methods": "error",
