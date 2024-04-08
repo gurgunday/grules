@@ -193,6 +193,7 @@ module.exports = {
         "unicorn/no-new-buffer": "error",
         "unicorn/no-static-only-class": "error",
         "unicorn/no-thenable": "error",
+        "unicorn/no-typeof-undefined": "error",
         "unicorn/no-unnecessary-await": "error",
         "unicorn/no-unnecessary-polyfills": "error",
         "unicorn/no-useless-fallback-in-spread": "error",
