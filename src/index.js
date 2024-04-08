@@ -177,7 +177,6 @@ module.exports = {
         // Third-Party Rules
 
         "unicorn/better-regex": "error",
-        "unicorn/consistent-destructuring": "warn",
         "unicorn/consistent-function-scoping": "error",
         "unicorn/custom-error-definition": "error",
         "unicorn/error-message": "error",
