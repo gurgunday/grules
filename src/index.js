@@ -41,8 +41,6 @@ module.exports = {
         "no-restricted-syntax": [
           "error",
           "ClassDeclaration",
-          "MethodDefinition[kind='get']",
-          "MethodDefinition[kind='set']",
           "FunctionDeclaration",
           "VariableDeclaration[kind='var']",
           "UnaryExpression[operator='void']",
