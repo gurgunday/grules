@@ -3,7 +3,7 @@
   "description": "A carefully curated subset of JavaScript that focuses on coherence and elegance.",
   "author": "Gürgün Dayıoğlu",
   "license": "MIT",
-  "version": "0.14.1",
+  "version": "0.14.2",
   "type": "commonjs",
   "main": "./src/index.js",
   "exports": "./src/index.js",
