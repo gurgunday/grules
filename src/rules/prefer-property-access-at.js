@@ -12,19 +12,18 @@ module.exports = {
           (node.callee.object.type === "Identifier" ||
             node.callee.object.type === "MemberExpression")
         ) {
-          const objectText = context
-            .getSourceCode()
-            .getText(node.callee.object);
-          const [argument] = node.arguments;
+          const objectText = context.sourceCode.getText(node.callee.object);
+          const argument = node.arguments[0];
 
           let val;
 
           if (
             argument.type === "UnaryExpression" &&
+            argument.operator === "-" &&
             argument.argument.type === "Literal" &&
             typeof argument.argument.value === "number"
           ) {
-            val = argument.argument.value;
+            val = -argument.argument.value;
           } else if (
             argument.type === "Literal" &&
             typeof argument.value === "number"
@@ -44,11 +43,11 @@ module.exports = {
           context.report({
             node,
             message: "Use array indexing instead of .at()",
-            fix: val
-              ? (fixer) => {
-                  return fixer.replaceText(node, replacement);
-                }
-              : undefined,
+            fix: (fixer) => {
+              if (replacement) {
+                return fixer.replaceText(node, replacement);
+              }
+            },
           });
         }
       },
