@@ -6,8 +6,7 @@ module.exports = {
           node.callee.type === "MemberExpression" &&
           node.callee.object.type === "Identifier" &&
           node.callee.object.name === "console" &&
-          node.callee.property.name === "log" &&
-          node.arguments.length === 0
+          node.callee.property.name === "log"
         ) {
           context.report({
             node,
