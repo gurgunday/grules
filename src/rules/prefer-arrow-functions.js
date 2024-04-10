@@ -92,105 +92,43 @@ const isStandaloneDeclaration = (node) => {
   );
 };
 
-const tokenStart = (token) => {
-  return token.start === undefined ? token.range[0] : token.start;
-};
-
-const tokenEnd = (token) => {
-  return token.end === undefined ? token.range[1] : token.end;
-};
-
-const replaceTokens = (origSource, tokens, replacements) => {
-  let removeNextLeadingSpace = false;
-  let result = "";
-  let lastTokenEnd = -1;
-
-  for (const token of tokens) {
-    if (lastTokenEnd >= 0) {
-      let between = origSource.slice(lastTokenEnd, tokenStart(token));
-      if (removeNextLeadingSpace) {
-        between = between.replace(/^\s+/u, "");
-      }
-      result += between;
-    }
-    removeNextLeadingSpace = false;
-    if (tokenStart(token) in replacements) {
-      const replaceInfo = replacements[tokenStart(token)];
-      if (replaceInfo[2]) {
-        result = result.replace(/\s+$/u, "");
-      }
-      result += replaceInfo[0];
-      removeNextLeadingSpace = Boolean(replaceInfo[1]);
-    } else {
-      result += origSource.slice(tokenStart(token), tokenEnd(token));
-    }
-    lastTokenEnd = tokenEnd(token);
-  }
-  return result;
-};
-
-const tokenMatcher = (type, value) => {
-  return (token) => {
-    return (
-      token.type === type && (value === undefined || token.value === value)
-    );
-  };
-};
-
 const fixFunctionExpression = (src, node) => {
-  const orig = src.getText();
-  const tokens = src.getTokens(node);
-  const swap = {};
+  let newText = src.getText();
 
-  const fnKeyword = tokens.find(tokenMatcher("Keyword", "function"));
-  if (fnKeyword) {
-    swap[tokenStart(fnKeyword)] = ["", true]; // Remove 'function' keyword
-  }
+  // Determine if function is async to preserve the keyword
+  const isAsync = node.async ? "async " : "";
 
-  // Handle the opening brace of the function body
-  const openingBrace = tokens.find(tokenMatcher("Punctuator", "{"));
-  if (openingBrace) {
-    swap[tokenStart(openingBrace)] = ["=> {", true]; // Add arrow function syntax
-  }
+  // Extract the function parameters and body
+  const paramsText = src.getText(node.params[0]);
+  const bodyText = src.getText(node.body);
 
-  return replaceTokens(orig, tokens, swap);
+  // Construct the new arrow function expression
+  newText = `${isAsync}(${paramsText}) => ${bodyText}`;
+
+  return newText;
 };
 
 const fixFunctionDeclaration = (src, node) => {
-  const orig = src.getText();
-  const tokens = src.getTokens(node);
-  const swap = {};
-  const omitVar =
+  let newText = src.getText();
+
+  // Determine if function is async to preserve the keyword
+  const isAsync = node.async ? "async " : "";
+
+  // Extract the function name, parameters, and body
+  const functionName = node.id.name;
+  const paramsText = src.getText(node.params[0]);
+  const bodyText = src.getText(node.body);
+
+  // Check if the function is exported by default, which affects whether 'const' should be prepended
+  const isDefaultExport =
     node.parent && node.parent.type === "ExportDefaultDeclaration";
 
-  // Handle async keyword if present
-  const asyncToken = tokens.find(tokenMatcher("Identifier", "async"));
-  if (asyncToken) {
-    swap[tokenStart(asyncToken)] = ["", true]; // Remove the existing 'async' keyword
-  }
+  // Construct the new arrow function declaration
+  newText = !isDefaultExport
+    ? `const ${functionName} = ${isAsync}(${paramsText}) => ${bodyText};`
+    : `export default ${isAsync}(${paramsText}) => ${bodyText};`;
 
-  const functionKeywordToken = tokens.find(tokenMatcher("Keyword", "function"));
-  if (functionKeywordToken) {
-    swap[tokenStart(functionKeywordToken)] = omitVar ? ["", true] : ["const"];
-  }
-
-  const nameToken = node.id
-    ? tokens.find(tokenMatcher("Identifier", node.id.name))
-    : null;
-  if (nameToken) {
-    swap[tokenStart(nameToken)] = [
-      `${node.id.name} =${node.async ? " async" : ""} `,
-      true,
-    ];
-  }
-
-  // Handle the opening brace of the function body
-  const openingBrace = tokens.find(tokenMatcher("Punctuator", "{"));
-  if (openingBrace) {
-    swap[tokenStart(openingBrace)] = ["=> {", true];
-  }
-
-  return replaceTokens(orig, tokens, swap);
+  return newText;
 };
 
 const inspectNode = (node, context) => {
@@ -237,7 +175,7 @@ const inspectNode = (node, context) => {
     node,
     message: "Prefer using arrow functions over plain functions",
     fix: (fixer) => {
-      const src = context.getSourceCode();
+      const src = context.sourceCode;
       let newText = null;
 
       if (node.type === "FunctionDeclaration") {
