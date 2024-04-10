@@ -4,6 +4,7 @@ module.exports = {
       CallExpression: (node) => {
         if (
           node.callee.type === "MemberExpression" &&
+          node.callee.object.type === "Identifier" &&
           node.callee.object.name === "Object" &&
           node.callee.property.name === "entries" &&
           node.arguments.length === 1 &&
