@@ -15,8 +15,7 @@ module.exports = {
             node,
             message: "Prefer '!exp' over 'Boolean(!exp)'.",
             fix: (fixer) => {
-              const sourceCode = context.getSourceCode();
-              const argumentText = sourceCode.getText(
+              const argumentText = context.sourceCode.getText(
                 node.arguments[0].argument,
               );
               return fixer.replaceText(node, `!${argumentText}`);
