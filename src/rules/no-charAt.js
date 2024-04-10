@@ -7,11 +7,12 @@ module.exports = {
       CallExpression: (node) => {
         if (
           node.callee.type === "MemberExpression" &&
+          node.callee.object.type === "Identifier" &&
           node.callee.property.name === "charAt" &&
           node.arguments.length === 1
         ) {
           const argument = node.arguments[0];
-          const argumentCode = context.getSourceCode().getText(argument);
+          const argumentCode = context.sourceCode.getText(argument);
           const objectText = context.sourceCode.getText(node.callee.object);
 
           context.report({
