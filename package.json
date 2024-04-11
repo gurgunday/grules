@@ -27,8 +27,8 @@
     "prettier": "^3.1.0"
   },
   "devDependencies": {
-    "@fastify/pre-commit": ">=2.1.0",
-    "grules": ">=0.14.1"
+    "@fastify/pre-commit": "^2.1.0",
+    "grules": "^0.15.0"
   },
   "repository": {
     "type": "git",
