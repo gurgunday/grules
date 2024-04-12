@@ -36,6 +36,7 @@ module.exports = {
         "no-multi-str": "error",
         "no-new-native-nonconstructor": "error",
         "no-new-wrappers": "error",
+        "no-object-constructor": "error",
         "no-octal-escape": "error",
         "no-proto": "error",
         "no-restricted-syntax": [
@@ -105,8 +106,7 @@ module.exports = {
         "no-negated-condition": "off",
         "no-nested-ternary": "off",
         "no-new": "off",
-        "no-new-func": "error",
-        "no-object-constructor": "error",
+        "no-new-func": "off",
         "no-param-reassign": "off",
         "no-plusplus": "off",
         "no-promise-executor-return": "off",
