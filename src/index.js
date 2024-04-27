@@ -188,7 +188,6 @@ module.exports = {
         "unicorn/no-instanceof-array": "error",
         "unicorn/no-invalid-remove-event-listener": "error",
         "unicorn/no-lonely-if": "error",
-        "unicorn/no-new-array": "error",
         "unicorn/no-new-buffer": "error",
         "unicorn/no-static-only-class": "error",
         "unicorn/no-thenable": "error",
