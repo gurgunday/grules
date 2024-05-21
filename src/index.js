@@ -164,6 +164,7 @@ module.exports = {
 
         "grules/no-charAt": "error",
         "grules/no-console-log": "error",
+        "grules/no-else-continue": "error",
         "grules/prefer-arrow-functions": "error",
         "grules/prefer-inc-dec": "error",
         "grules/prefer-literal-bigint": "error",
@@ -249,6 +250,7 @@ module.exports = {
   rules: {
     "no-charAt": require("./rules/no-charAt"),
     "no-console-log": require("./rules/no-console-log"),
+    "no-else-continue": require("./rules/no-else-continue"),
     "prefer-arrow-functions": require("./rules/prefer-arrow-functions"),
     "prefer-inc-dec": require("./rules/prefer-inc-dec"),
     "prefer-literal-bigint": require("./rules/prefer-literal-bigint"),
