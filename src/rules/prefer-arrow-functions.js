@@ -174,20 +174,25 @@ const inspectNode = (node, context) => {
   return context.report({
     node,
     message: "Prefer using arrow functions over plain functions",
-    fix: (fixer) => {
-      const src = context.sourceCode;
-      let newText = null;
+    suggest: [
+      {
+        desc: "Convert to arrow function",
+        fix: (fixer) => {
+          const src = context.sourceCode;
+          let newText = null;
 
-      if (node.type === "FunctionDeclaration") {
-        newText = fixFunctionDeclaration(src, node);
-      } else if (node.type === "FunctionExpression") {
-        newText = fixFunctionExpression(src, node);
-      }
+          if (node.type === "FunctionDeclaration") {
+            newText = fixFunctionDeclaration(src, node);
+          } else if (node.type === "FunctionExpression") {
+            newText = fixFunctionExpression(src, node);
+          }
 
-      if (newText) {
-        return fixer.replaceText(node, newText);
-      }
-    },
+          if (newText) {
+            return fixer.replaceText(node, newText);
+          }
+        },
+      },
+    ],
   });
 };
 
@@ -198,7 +203,7 @@ module.exports = {
       category: "emcascript6",
       recommended: false,
     },
-    fixable: "code",
+    hasSuggestions: true,
     schema: [
       {
         type: "object",
