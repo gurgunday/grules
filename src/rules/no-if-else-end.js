@@ -5,28 +5,34 @@ module.exports = {
         // Check if this IfStatement is the last statement in the block
         if (
           node.parent.type === "BlockStatement" &&
-          node.parent.body[node.parent.body.length - 1] === node
+          node.parent.body[node.parent.body.length - 1] === node &&
+          node.alternate && // Ensure there is an 'else' block
+          node.alternate.type === "BlockStatement" // Ensure the alternate is a simple 'else', not 'else if'
         ) {
-          // Check if neither consequent nor alternate ends with return or continue
-          const lastConsequentStatement =
-            node.consequent.body[node.consequent.body.length - 1];
-          const lastAlternateStatement =
-            node.alternate &&
-            node.alternate.body[node.alternate.body.length - 1];
+          // Function to get the last statement of a block
+          const getLastStatement = (block) => {
+            if (block && block.type === "BlockStatement") {
+              return block.body[block.body.length - 1];
+            }
+            return block;
+          };
 
+          // Get the last statements of the consequent and alternate blocks
+          const lastConsequentStatement = getLastStatement(node.consequent);
+          const lastAlternateStatement = getLastStatement(node.alternate);
+
+          // Check if a statement ends with return or continue
           const endsWithReturnOrContinue = (statement) => {
             return (
               statement &&
               (statement.type === "ReturnStatement" ||
-                (statement.type === "ExpressionStatement" &&
-                  statement.expression.type === "ContinueStatement"))
+                statement.type === "ContinueStatement")
             );
           };
 
           if (
             !endsWithReturnOrContinue(lastConsequentStatement) ||
-            (node.alternate &&
-              !endsWithReturnOrContinue(lastAlternateStatement))
+            !endsWithReturnOrContinue(lastAlternateStatement)
           ) {
             context.report({
               node,
