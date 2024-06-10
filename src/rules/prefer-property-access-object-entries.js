@@ -10,6 +10,18 @@ module.exports = {
           node.arguments.length === 1 &&
           node.arguments[0].type === "Identifier"
         ) {
+          let current = node.parent;
+          while (current) {
+            if (
+              current.type === "NewExpression" &&
+              current.callee.type === "Identifier" &&
+              current.callee.name === "Map"
+            ) {
+              return;
+            }
+            current = current.parent;
+          }
+
           context.report({
             node,
             message:
