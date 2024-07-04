@@ -1,4 +1,4 @@
-A carefully curated subset of JavaScript that focuses on coherence and elegance.
+nonbreakin**grules** is a carefully curated subset of JavaScript that focuses on coherence and elegance.
 
 ![grules.png](./grules.png)
 
