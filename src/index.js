@@ -29,6 +29,7 @@ module.exports = {
         "no-duplicate-imports": "error",
         "no-empty-static-block": "error",
         "no-eval": "error",
+        "no-extend-native": "error",
         "no-implied-eval": "error",
         "no-iterator": "error",
         "no-undef": ["error", { typeof: true }],
@@ -90,9 +91,8 @@ module.exports = {
         "no-div-regex": "off",
         "no-else-return": ["error", { allowElseIf: false }],
         "no-empty": ["error", { allowEmptyCatch: true }],
-        "no-empty-function": "off", // noop
+        "no-empty-function": "off",
         "no-eq-null": "off",
-        "no-extend-native": "error",
         "no-extra-bind": "error",
         "no-extra-label": "error",
         "no-implicit-coercion": "off",
