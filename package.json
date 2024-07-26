@@ -16,7 +16,7 @@
     "lint:fix": "eslint --fix . && prettier --write ."
   },
   "dependencies": {
-    "eslint": "^8.54.0",
+    "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-grules": "^0.11.0",
     "eslint-plugin-jsdoc": "^48.0.6",
@@ -28,7 +28,8 @@
   },
   "devDependencies": {
     "@fastify/pre-commit": "^2.1.0",
-    "grules": "git+https://github.com/gurgunday/grules.git"
+    "eslint-plugin-prefer-arrow-functions": "^3.3.2",
+    "grules": "file:./"
   },
   "repository": {
     "type": "git",

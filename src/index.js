@@ -15,7 +15,7 @@ module.exports = {
         "plugin:prettier/recommended",
         "plugin:jsdoc/recommended",
       ],
-      plugins: ["grules", "unicorn", "n"],
+      plugins: ["grules", "prefer-arrow-functions", "unicorn", "n"],
       rules: {
         // Core changes
         "arrow-body-style": ["error", "always"],
@@ -167,13 +167,20 @@ module.exports = {
         "grules/no-charAt": "error",
         "grules/no-console-log": "error",
         "grules/no-else-continue": "error",
-        "grules/prefer-arrow-functions": "error",
         "grules/prefer-inc-dec": "error",
         "grules/prefer-literal-bigint": "error",
         "grules/prefer-negation-operator-boolean": "error",
         "grules/prefer-negation-operator-number": "error",
         "grules/prefer-property-access-at": "error",
         "grules/prefer-property-access-object-entries": "error",
+
+        "prefer-arrow-functions/prefer-arrow-functions": [
+          "error",
+          {
+            disallowPrototype: true,
+            returnStyle: "explicit",
+          },
+        ],
 
         // Third-Party Rules
 
@@ -256,7 +263,6 @@ module.exports = {
     "no-charAt": require("./rules/no-charAt"),
     "no-console-log": require("./rules/no-console-log"),
     "no-else-continue": require("./rules/no-else-continue"),
-    "prefer-arrow-functions": require("./rules/prefer-arrow-functions"),
     "prefer-inc-dec": require("./rules/prefer-inc-dec"),
     "prefer-literal-bigint": require("./rules/prefer-literal-bigint"),
     "prefer-negation-operator-boolean": require("./rules/prefer-negation-operator-boolean"),
