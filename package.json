@@ -21,14 +21,14 @@
     "eslint-plugin-grules": "^0.11.0",
     "eslint-plugin-jsdoc": "^48.0.6",
     "eslint-plugin-n": "^17.1.0",
+    "eslint-plugin-prefer-arrow-functions": "^3.3.2",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-unicorn": "^53.0.0",
+    "eslint-plugin-unicorn": "^55.0.0",
     "prettier": "^3.1.0"
   },
   "devDependencies": {
     "@fastify/pre-commit": "^2.1.0",
-    "eslint-plugin-prefer-arrow-functions": "^3.3.2",
     "grules": "file:./"
   },
   "repository": {
