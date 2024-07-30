@@ -1,3 +1,5 @@
+# grules ![img.shields.io/bundlephobia/minzip/grules](https://img.shields.io/bundlephobia/minzip/grules)
+
 nonbreakin**grules** is a carefully curated subset of JavaScript that focuses on harmony.
 
 It will not prevent you from writing code that is fast, but it will guide you to write code that is coherent and elegant.
