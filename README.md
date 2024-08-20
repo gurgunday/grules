@@ -2,7 +2,7 @@
 
 nonbreakin**grules** is a carefully curated subset of JavaScript that focuses on harmony.
 
-It will not prevent you from writing code that is fast, but it will push you to write code that is coherent and elegant.
+It will not prevent you from writing code that is fast, but it will guide you to write code that is coherent and elegant.
 
 ![grules.png](./grules.png)
 
