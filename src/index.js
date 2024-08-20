@@ -13,7 +13,7 @@ module.exports = {
         "eslint:recommended",
         "plugin:promise/recommended",
         "plugin:prettier/recommended",
-        "plugin:jsdoc/recommended-typescript",
+        "plugin:jsdoc/recommended",
       ],
       plugins: ["grules", "prefer-arrow-functions", "unicorn", "n"],
       rules: {
