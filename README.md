@@ -14,14 +14,12 @@ npm i grules
 
 ## Usage
 
-Create `.eslintrc.json` at the root of the project:
+Create `eslint.config.js` at the root of the project:
 
-```json
-{
-  "root": true,
-  "env": { "node": true },
-  "extends": ["plugin:grules/all"]
-}
+```js
+import grules from "grules";
+
+export default [...grules];
 ```
 
 Add the following to `package.json`:

@@ -4,7 +4,7 @@
   "author": "Gürgün Dayıoğlu",
   "license": "MIT",
   "version": "0.23.3",
-  "type": "commonjs",
+  "type": "module",
   "main": "./src/index.js",
   "exports": "./src/index.js",
   "engines": {
@@ -16,16 +16,18 @@
     "lint:fix": "eslint --fix . && prettier --write ."
   },
   "dependencies": {
-    "eslint": "^8.57.0",
+    "@eslint/js": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-grules": "^0.11.0",
-    "eslint-plugin-jsdoc": "^50.0.1",
-    "eslint-plugin-n": "^17.1.0",
-    "eslint-plugin-prefer-arrow-functions": "^3.3.2",
-    "eslint-plugin-prettier": "^5.0.1",
-    "eslint-plugin-promise": "^7.0.0",
-    "eslint-plugin-unicorn": "^55.0.0",
-    "prettier": "^3.1.0"
+    "eslint-plugin-jsdoc": "^50.3.0",
+    "eslint-plugin-n": "^17.10.3",
+    "eslint-plugin-prefer-arrow-functions": "^3.4.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-promise": "^7.1.0",
+    "eslint-plugin-unicorn": "^55.0.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9",
+    "prettier": ">=3"
   },
   "devDependencies": {
     "@fastify/pre-commit": "^2.1.0",

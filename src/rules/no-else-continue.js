@@ -9,7 +9,7 @@ const endsWithContinue = (statement) => {
   return statement.type === "ContinueStatement";
 };
 
-module.exports = {
+export default {
   create: (context) => {
     return {
       IfStatement: (node) => {
