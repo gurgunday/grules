@@ -1,41 +1,38 @@
 import eslintPluginJS from "@eslint/js";
 import eslintPluginPromise from "eslint-plugin-promise";
-import eslintPluginPrettierFlatConfigRecommended from "eslint-plugin-prettier/recommended";
 import eslintPluginJSDoc from "eslint-plugin-jsdoc";
+import eslintPluginPrettier from "eslint-plugin-prettier";
 import eslintPluginPreferArrowFunctions from "eslint-plugin-prefer-arrow-functions";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginN from "eslint-plugin-n";
 
-const eslintPluginPrettier = {
-  configs: { "flat/recommended": eslintPluginPrettierFlatConfigRecommended },
-};
+import noCharAt from "./rules/no-charAt.js";
+import noConsoleLog from "./rules/no-console-log.js";
+import noElseContinue from "./rules/no-else-continue.js";
+import preferIncDec from "./rules/prefer-inc-dec.js";
+import preferLiteralBigint from "./rules/prefer-literal-bigint.js";
+import preferNegationOperatorBoolean from "./rules/prefer-negation-operator-boolean.js";
+import preferNegationOperatorNumber from "./rules/prefer-negation-operator-number.js";
+import preferPropertyAccessAt from "./rules/prefer-property-access-at.js";
+import preferPropertyAccessObjectEntries from "./rules/prefer-property-access-object-entries.js";
 
 const eslintPluginGRULES = {
   name: "grules",
-  configs: { "flat/recommended": null },
+  configs: { recommended: null },
   rules: {
-    "no-charAt": (await import("./rules/no-charAt.js")).default,
-    "no-console-log": (await import("./rules/no-console-log.js")).default,
-    "no-else-continue": (await import("./rules/no-else-continue.js")).default,
-    "prefer-inc-dec": (await import("./rules/prefer-inc-dec.js")).default,
-    "prefer-literal-bigint": (await import("./rules/prefer-literal-bigint.js"))
-      .default,
-    "prefer-negation-operator-boolean": (
-      await import("./rules/prefer-negation-operator-boolean.js")
-    ).default,
-    "prefer-negation-operator-number": (
-      await import("./rules/prefer-negation-operator-number.js")
-    ).default,
-    "prefer-property-access-at": (
-      await import("./rules/prefer-property-access-at.js")
-    ).default,
-    "prefer-property-access-object-entries": (
-      await import("./rules/prefer-property-access-object-entries.js")
-    ).default,
+    "no-charAt": noCharAt,
+    "no-console-log": noConsoleLog,
+    "no-else-continue": noElseContinue,
+    "prefer-inc-dec": preferIncDec,
+    "prefer-literal-bigint": preferLiteralBigint,
+    "prefer-negation-operator-boolean": preferNegationOperatorBoolean,
+    "prefer-negation-operator-number": preferNegationOperatorNumber,
+    "prefer-property-access-at": preferPropertyAccessAt,
+    "prefer-property-access-object-entries": preferPropertyAccessObjectEntries,
   },
 };
 
-eslintPluginGRULES.configs["flat/recommended"] = {
+eslintPluginGRULES.configs.recommended = {
   name: "grules/flat/recommended",
   plugins: { grules: eslintPluginGRULES },
   rules: Object.fromEntries(
@@ -49,8 +46,6 @@ eslintPluginGRULES.configs["flat/recommended"] = {
 export default [
   eslintPluginJS.configs.recommended,
   eslintPluginPromise.configs["flat/recommended"],
-  eslintPluginGRULES.configs["flat/recommended"],
-  eslintPluginPrettier.configs["flat/recommended"],
   eslintPluginJSDoc.configs["flat/recommended-typescript-flavor"],
   {
     languageOptions: { ecmaVersion: 2024, sourceType: "module" },
@@ -58,6 +53,7 @@ export default [
       "prefer-arrow-functions": eslintPluginPreferArrowFunctions,
       unicorn: eslintPluginUnicorn,
       n: eslintPluginN,
+      prettier: eslintPluginPrettier,
     },
     rules: {
       // Core changes
@@ -210,6 +206,7 @@ export default [
       "prefer-arrow-functions/prefer-arrow-functions": [
         "error",
         {
+          classPropertiesAllowed: true,
           disallowPrototype: true,
           returnStyle: "explicit",
         },
@@ -293,6 +290,9 @@ export default [
       "n/no-extraneous-import": "error",
       "n/no-missing-import": "error",
       "n/prefer-node-protocol": "error",
+
+      "prettier/prettier": "error",
     },
   },
+  eslintPluginGRULES.configs.recommended,
 ];
