@@ -6,7 +6,6 @@ import eslintPluginPreferArrowFunctions from "eslint-plugin-prefer-arrow-functio
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginN from "eslint-plugin-n";
 import noCharAt from "./rules/no-charAt.js";
-import noConsoleLog from "./rules/no-console-log.js";
 import noElseContinue from "./rules/no-else-continue.js";
 import preferIncDec from "./rules/prefer-inc-dec.js";
 import preferLiteralBigint from "./rules/prefer-literal-bigint.js";
@@ -20,7 +19,6 @@ const eslintPluginGRULES = {
   configs: { recommended: null },
   rules: {
     "no-charAt": noCharAt,
-    "no-console-log": noConsoleLog,
     "no-else-continue": noElseContinue,
     "prefer-inc-dec": preferIncDec,
     "prefer-literal-bigint": preferLiteralBigint,
