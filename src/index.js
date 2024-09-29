@@ -5,7 +5,6 @@ import eslintPluginPrettier from "eslint-plugin-prettier";
 import eslintPluginPreferArrowFunctions from "eslint-plugin-prefer-arrow-functions";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginN from "eslint-plugin-n";
-
 import noCharAt from "./rules/no-charAt.js";
 import noConsoleLog from "./rules/no-console-log.js";
 import noElseContinue from "./rules/no-else-continue.js";
@@ -42,7 +41,6 @@ eslintPluginGRULES.configs.recommended = {
   ),
 };
 
-/** @type {import('eslint').ESLint.ConfigData} */
 export default [
   eslintPluginJS.configs.recommended,
   eslintPluginPromise.configs["flat/recommended"],
