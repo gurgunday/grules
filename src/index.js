@@ -89,6 +89,10 @@ export default [
         "UnaryExpression[operator='+']",
         "SequenceExpression",
         "LabeledStatement",
+        {
+          selector: 'SwitchCase > *.consequent[type!="BlockStatement"]',
+          message: "Switch cases without blocks are disallowed.",
+        },
       ],
       "no-self-compare": "error",
       "one-var": ["error", "never"],
