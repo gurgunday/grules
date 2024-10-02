@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@fastify/pre-commit": "^2.1.0",
+    "eslint-plugin-eslint-plugin": "^6.2.0",
     "grules": "file:./",
     "typescript": ">=5.6.2"
   },

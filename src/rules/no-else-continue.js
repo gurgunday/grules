@@ -1,8 +1,8 @@
 const endsWithContinue = (statement) => {
   if (statement.type === "BlockStatement") {
-    const { body } = statement;
     return (
-      body.length > 0 && body[body.length - 1].type === "ContinueStatement"
+      statement.body.length &&
+      statement.body[statement.body.length - 1].type === "ContinueStatement"
     );
   }
 
@@ -10,13 +10,20 @@ const endsWithContinue = (statement) => {
 };
 
 export default {
+  meta: {
+    type: "problem",
+    schema: [],
+    messages: {
+      unexpectedElseAfterContinue: "Unexpected else after continue statement.",
+    },
+  },
   create: (context) => {
     return {
       IfStatement: (node) => {
         if (node.alternate && endsWithContinue(node.consequent)) {
           context.report({
             node: node.alternate,
-            message: "Unexpected else after continue statement.",
+            messageId: "unexpectedElseAfterContinue",
           });
         }
       },

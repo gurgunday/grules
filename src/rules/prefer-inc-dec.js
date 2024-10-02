@@ -1,5 +1,10 @@
 export default {
   meta: {
+    type: "problem",
+    schema: [],
+    messages: {
+      preferIncDec: "Use '{{operator}}' instead of '{{assignment}}'",
+    },
     fixable: "code",
   },
   create: (context) => {
@@ -9,7 +14,11 @@ export default {
           if (node.operator === "+=") {
             context.report({
               node,
-              message: "Use '++' instead of '+= 1'",
+              messageId: "preferIncDec",
+              data: {
+                operator: "++",
+                assignment: "+=",
+              },
               fix: (fixer) => {
                 return fixer.replaceText(node, `++${node.left.name}`);
               },
@@ -17,7 +26,11 @@ export default {
           } else if (node.operator === "-=") {
             context.report({
               node,
-              message: "Use '--' instead of '-= 1'",
+              messageId: "preferIncDec",
+              data: {
+                operator: "--",
+                assignment: "-=",
+              },
               fix: (fixer) => {
                 return fixer.replaceText(node, `--${node.left.name}`);
               },

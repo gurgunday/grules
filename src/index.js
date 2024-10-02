@@ -7,13 +7,13 @@ import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginN from "eslint-plugin-n";
 import noCharAt from "./rules/no-charAt.js";
 import noElseContinue from "./rules/no-else-continue.js";
-import preferBreak from "./rules/prefer-break.js";
 import preferIncDec from "./rules/prefer-inc-dec.js";
 import preferLiteralBigint from "./rules/prefer-literal-bigint.js";
 import preferNegationOperatorBoolean from "./rules/prefer-negation-operator-boolean.js";
 import preferNegationOperatorNumber from "./rules/prefer-negation-operator-number.js";
 import preferPropertyAccessAt from "./rules/prefer-property-access-at.js";
 import preferPropertyAccessObjectEntries from "./rules/prefer-property-access-object-entries.js";
+import switchBreak from "./rules/switch-break.js";
 
 const eslintPluginGRULES = {
   name: "grules",
@@ -21,13 +21,13 @@ const eslintPluginGRULES = {
   rules: {
     "no-charAt": noCharAt,
     "no-else-continue": noElseContinue,
-    "prefer-break": preferBreak,
     "prefer-inc-dec": preferIncDec,
     "prefer-literal-bigint": preferLiteralBigint,
     "prefer-negation-operator-boolean": preferNegationOperatorBoolean,
     "prefer-negation-operator-number": preferNegationOperatorNumber,
     "prefer-property-access-at": preferPropertyAccessAt,
     "prefer-property-access-object-entries": preferPropertyAccessObjectEntries,
+    "switch-break": switchBreak,
   },
 };
 

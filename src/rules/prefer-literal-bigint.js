@@ -1,5 +1,11 @@
 export default {
   meta: {
+    type: "problem",
+    schema: [],
+    messages: {
+      preferLiteralBigInt:
+        "Prefer using BigInt literals (e.g., 234n) instead of BigInt with a literal number.",
+    },
     fixable: "code",
   },
   create: (context) => {
@@ -13,11 +19,9 @@ export default {
         ) {
           context.report({
             node,
-            message:
-              "Prefer using BigInt literals (e.g., 234n) instead of BigInt with a literal number.",
+            messageId: "preferLiteralBigInt",
             fix: (fixer) => {
-              const bigintLiteral = `${node.arguments[0].value}n`;
-              return fixer.replaceText(node, bigintLiteral);
+              return fixer.replaceText(node, `${node.arguments[0].value}n`);
             },
           });
         }

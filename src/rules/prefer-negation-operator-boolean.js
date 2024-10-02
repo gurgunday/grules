@@ -1,5 +1,10 @@
 export default {
   meta: {
+    type: "problem",
+    schema: [],
+    messages: {
+      preferNegationOperatorBoolean: "Prefer '!exp' over 'Boolean(!exp)'.",
+    },
     fixable: "code",
   },
   create: (context) => {
@@ -13,13 +18,12 @@ export default {
         ) {
           context.report({
             node,
-            message: "Prefer '!exp' over 'Boolean(!exp)'.",
+            messageId: "preferNegationOperatorBoolean",
             fix: (fixer) => {
-              const argumentText = context.sourceCode.getText(
-                node.arguments[0].argument,
+              return fixer.replaceText(
+                node,
+                `!${context.sourceCode.getText(node.arguments[0].argument)}`,
               );
-
-              return fixer.replaceText(node, `!${argumentText}`);
             },
           });
         }

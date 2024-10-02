@@ -8,12 +8,19 @@ const checkLastStatement = (context, node, statement) => {
   ) {
     context.report({
       node: statement || node,
-      message: "Missing break statement at the end of the case",
+      messageId: "missingBreakStatement",
     });
   }
 };
 
 export default {
+  meta: {
+    type: "problem",
+    schema: [],
+    messages: {
+      missingBreakStatement: "Missing break statement at the end of the case",
+    },
+  },
   create: (context) => {
     return {
       SwitchCase: (node) => {
@@ -22,23 +29,18 @@ export default {
           return;
         }
 
-        const lastStatement = node.consequent[node.consequent.length - 1];
+        let lastStatement = node.consequent[node.consequent.length - 1];
 
-        if (lastStatement.type === "BlockStatement") {
-          const blockStatements = lastStatement.body;
-
-          if (blockStatements.length) {
-            checkLastStatement(
-              context,
-              node,
-              blockStatements[blockStatements.length - 1],
-            );
+        while (lastStatement.type === "BlockStatement") {
+          if (lastStatement.body.length) {
+            lastStatement = lastStatement.body[lastStatement.body.length - 1];
           } else {
-            checkLastStatement(context, node, lastStatement);
+            lastStatement = null;
+            break;
           }
-        } else {
-          checkLastStatement(context, node, lastStatement);
         }
+
+        checkLastStatement(context, node, lastStatement);
       },
     };
   },
