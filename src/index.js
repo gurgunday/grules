@@ -6,7 +6,7 @@ import eslintPluginPreferArrowFunctions from "eslint-plugin-prefer-arrow-functio
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginN from "eslint-plugin-n";
 import noCharAt from "./rules/no-charAt.js";
-import noElseContinue from "./rules/no-else-continue.js";
+import noElseFlow from "./rules/no-else-flow.js";
 import preferIncDec from "./rules/prefer-inc-dec.js";
 import preferLiteralBigint from "./rules/prefer-literal-bigint.js";
 import preferNegationOperatorBoolean from "./rules/prefer-negation-operator-boolean.js";
@@ -20,7 +20,7 @@ const eslintPluginGRULES = {
   configs: { recommended: null },
   rules: {
     "no-charAt": noCharAt,
-    "no-else-continue": noElseContinue,
+    "no-else-flow": noElseFlow,
     "prefer-inc-dec": preferIncDec,
     "prefer-literal-bigint": preferLiteralBigint,
     "prefer-negation-operator-boolean": preferNegationOperatorBoolean,

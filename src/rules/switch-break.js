@@ -1,11 +1,12 @@
+const controlFlowTypes = new Set([
+  "BreakStatement",
+  "ContinueStatement",
+  "ReturnStatement",
+  "ThrowStatement",
+]);
+
 const checkLastStatement = (context, node, statement) => {
-  if (
-    !statement ||
-    (statement.type !== "BreakStatement" &&
-      statement.type !== "ContinueStatement" &&
-      statement.type !== "ReturnStatement" &&
-      statement.type !== "ThrowStatement")
-  ) {
+  if (!statement || !controlFlowTypes.has(statement.type)) {
     context.report({
       node: statement || node,
       messageId: "missingBreakStatement",
