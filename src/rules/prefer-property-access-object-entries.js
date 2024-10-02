@@ -11,6 +11,7 @@ export default {
           node.arguments[0].type === "Identifier"
         ) {
           let current = node.parent;
+
           while (current) {
             if (
               current.type === "NewExpression" &&
@@ -19,6 +20,7 @@ export default {
             ) {
               return;
             }
+
             current = current.parent;
           }
 

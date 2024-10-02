@@ -18,6 +18,7 @@ export default {
               const argumentText = context.sourceCode.getText(
                 node.arguments[0].argument,
               );
+
               return fixer.replaceText(node, `!${argumentText}`);
             },
           });

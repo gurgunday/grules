@@ -14,7 +14,6 @@ export default {
         ) {
           const objectText = context.sourceCode.getText(node.callee.object);
           const argument = node.arguments[0];
-
           let val;
 
           if (
