@@ -214,7 +214,7 @@ export default [
         },
       ],
 
-      "unicorn/better-regex": "error",
+      "unicorn/consistent-existence-index-check": "error",
       "unicorn/consistent-empty-array-spread": "error",
       "unicorn/consistent-function-scoping": "error",
       "unicorn/custom-error-definition": "error",
