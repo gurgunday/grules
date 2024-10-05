@@ -190,7 +190,7 @@ export default [
       "prefer-spread": "off",
       "prefer-template": "off",
       radix: ["error", "as-needed"],
-      "require-atomic-updates": "warn",
+      "require-atomic-updates": ["warn", { allowProperties: true }],
       "require-await": "warn",
       "require-unicode-regexp": "warn",
       "sort-imports": "off",
