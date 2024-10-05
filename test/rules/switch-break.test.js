@@ -73,6 +73,18 @@ ruleTester.run("switch-break", rule, {
           }
         `,
     },
+    {
+      code: `
+          while (true) {
+            switch (value) {
+              case 1:
+              case 2:
+                console.log('123')
+                break;
+            }
+          }
+        `,
+    },
   ],
   invalid: [
     {
@@ -99,6 +111,8 @@ ruleTester.run("switch-break", rule, {
       code: `
           switch (value) {
             case 1:
+            case 2:
+              console.log('two');
           }
         `,
       errors: [

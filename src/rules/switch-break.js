@@ -5,15 +5,6 @@ const controlFlowTypes = new Set([
   "ThrowStatement",
 ]);
 
-const checkLastStatement = (context, node, statement) => {
-  if (!statement || !controlFlowTypes.has(statement.type)) {
-    context.report({
-      node: statement || node,
-      messageId: "missingBreakStatement",
-    });
-  }
-};
-
 export default {
   meta: {
     type: "problem",
@@ -26,7 +17,6 @@ export default {
     return {
       SwitchCase: (node) => {
         if (!node.consequent.length) {
-          checkLastStatement(context, node, null);
           return;
         }
 
@@ -41,7 +31,12 @@ export default {
           }
         }
 
-        checkLastStatement(context, node, lastStatement);
+        if (lastStatement && !controlFlowTypes.has(lastStatement.type)) {
+          context.report({
+            node: lastStatement,
+            messageId: "missingBreakStatement",
+          });
+        }
       },
     };
   },
