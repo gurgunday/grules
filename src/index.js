@@ -56,7 +56,6 @@ export default [
     rules: {
       // Core changes
       "arrow-body-style": ["error", "always"],
-      "class-methods-use-this": "error",
       curly: ["error", "all"],
       "default-case-last": "error",
       eqeqeq: ["error", "always", { null: "ignore" }],
@@ -102,6 +101,7 @@ export default [
       "block-scoped-var": "off",
       camelcase: "off",
       "capitalized-comments": "off",
+      "class-methods-use-this": "off",
       complexity: "off",
       "consistent-return": "off",
       "consistent-this": "off",
