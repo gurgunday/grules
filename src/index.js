@@ -65,7 +65,7 @@ export default [
       "no-empty-static-block": "error",
       "no-eval": "error",
       "no-extend-native": "error",
-      "no-implicit-coercion": ["error", { disallowTemplateShorthand: true }],
+      "no-implicit-coercion": "error",
       "no-implied-eval": "error",
       "no-iterator": "error",
       "no-undef": ["error", { typeof: true }],
