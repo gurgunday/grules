@@ -65,7 +65,7 @@ export default [
       "no-empty-static-block": "error",
       "no-eval": "error",
       "no-extend-native": "error",
-      "no-implicit-coercion": "error",
+      "no-implicit-coercion": "error", // +exp and `${exp} are allowed as they have different semantics than Number (for bigints) and String (for symbols)
       "no-implied-eval": "error",
       "no-iterator": "error",
       "no-undef": ["error", { typeof: true }],
@@ -84,7 +84,6 @@ export default [
         "FunctionDeclaration",
         "VariableDeclaration[kind='var']",
         "UnaryExpression[operator='void']",
-        "UnaryExpression[operator='+']",
         "SequenceExpression",
         "LabeledStatement",
       ],
