@@ -55,7 +55,7 @@ export default [
     },
     rules: {
       // Core changes
-      "arrow-body-style": ["error", "always"],
+      "arrow-body-style": ["error", "as-needed"],
       curly: ["error", "all"],
       "default-case-last": "error",
       eqeqeq: ["error", "always", { null: "ignore" }],
@@ -208,7 +208,6 @@ export default [
         {
           classPropertiesAllowed: true,
           disallowPrototype: true,
-          returnStyle: "explicit",
         },
       ],
 
