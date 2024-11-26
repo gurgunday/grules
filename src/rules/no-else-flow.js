@@ -28,25 +28,23 @@ export default {
         "Unexpected else after {{controlFlowType}} statement.",
     },
   },
-  create: (context) => {
-    return {
-      IfStatement: (node) => {
-        if (node.alternate) {
-          const controlFlowType = endsWithControlFlow(node.consequent);
+  create: (context) => ({
+    IfStatement: (node) => {
+      if (node.alternate) {
+        const controlFlowType = endsWithControlFlow(node.consequent);
 
-          if (controlFlowType) {
-            context.report({
-              node: node.alternate,
-              messageId: "unexpectedElseAfterControlFlow",
-              data: {
-                controlFlowType: controlFlowType
-                  .replace("Statement", "")
-                  .toLowerCase(),
-              },
-            });
-          }
+        if (controlFlowType) {
+          context.report({
+            node: node.alternate,
+            messageId: "unexpectedElseAfterControlFlow",
+            data: {
+              controlFlowType: controlFlowType
+                .replace("Statement", "")
+                .toLowerCase(),
+            },
+          });
         }
-      },
-    };
-  },
+      }
+    },
+  }),
 };

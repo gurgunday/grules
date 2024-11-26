@@ -8,24 +8,21 @@ export default {
     },
     fixable: "code",
   },
-  create: (context) => {
-    return {
-      CallExpression: (node) => {
-        if (
-          node.callee.name === "BigInt" &&
-          node.arguments.length === 1 &&
-          node.arguments[0].type === "Literal" &&
-          typeof node.arguments[0].value === "number"
-        ) {
-          context.report({
-            node,
-            messageId: "preferLiteralBigInt",
-            fix: (fixer) => {
-              return fixer.replaceText(node, `${node.arguments[0].value}n`);
-            },
-          });
-        }
-      },
-    };
-  },
+  create: (context) => ({
+    CallExpression: (node) => {
+      if (
+        node.callee.name === "BigInt" &&
+        node.arguments.length === 1 &&
+        node.arguments[0].type === "Literal" &&
+        typeof node.arguments[0].value === "number"
+      ) {
+        context.report({
+          node,
+          messageId: "preferLiteralBigInt",
+          fix: (fixer) =>
+            fixer.replaceText(node, `${node.arguments[0].value}n`),
+        });
+      }
+    },
+  }),
 };

@@ -35,9 +35,10 @@ eslintPluginGRULES.configs.recommended = {
   name: "grules/flat/recommended",
   plugins: { grules: eslintPluginGRULES },
   rules: Object.fromEntries(
-    Object.keys(eslintPluginGRULES.rules).map((ruleName) => {
-      return [`grules/${ruleName}`, "error"];
-    }),
+    Object.keys(eslintPluginGRULES.rules).map((ruleName) => [
+      `grules/${ruleName}`,
+      "error",
+    ]),
   ),
 };
 

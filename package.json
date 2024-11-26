@@ -11,7 +11,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "npm run lint && node --test test/rules/",
+    "test": "npm run lint && node --test test/rules/*",
     "lint": "eslint . && prettier --check .",
     "lint:fix": "eslint --fix . && prettier --write .",
     "typescript": "tsc src/*.js --allowJs --declaration --emitDeclarationOnly --skipLibCheck"
