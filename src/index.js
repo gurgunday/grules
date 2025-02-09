@@ -244,7 +244,6 @@ export default [
       "unicorn/no-negation-in-equality-check": "error",
       "unicorn/no-single-promise-in-promise-methods": "error",
       "unicorn/no-zero-fractions": "error",
-      "unicorn/number-literal-case": "error",
       "unicorn/prefer-array-find": "error",
       "unicorn/prefer-array-flat": "error",
       "unicorn/prefer-array-flat-map": "error",
